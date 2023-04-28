@@ -13,7 +13,6 @@ import com.PrimerApp.SpringBoot.Security.jwt.JwtProvider;
 import jakarta.validation.Valid;
 import java.util.HashSet;
 import java.util.Set;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -34,19 +33,15 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin
 public class AuthController {
     
-    @Autowired
+    
     PasswordEncoder passwordEncoder;
     
-    @Autowired
     AuthenticationManager authenticationManager;
     
-    @Autowired
     UsuarioService usuarioService;
     
-    @Autowired
     RolService rolService;
     
-    @Autowired
     JwtProvider jwtProvider;
     
    
