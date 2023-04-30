@@ -1,46 +1,43 @@
-/*package com.PrimerApp.SpringBoot.service;
+package com.PrimerApp.SpringBoot.service;
 
+import com.PrimerApp.SpringBoot.Interface.ISoftSkillService;
+import com.PrimerApp.SpringBoot.model.SoftSkill;
 import com.PrimerApp.SpringBoot.repository.SoftSkillRepository;
-import jakarta.transaction.Transactional;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-@Transactional
 @Service
-public class SoftSkillService implements IEducacionService{
+public class SoftSkillService implements ISoftSkillService{
     
     @Autowired
-    public SoftSkillRepository softSkillRepository;
+    public SoftSkillRepository softRepo;
     
-    public List<SoftSkill> list(){
-    return softSkillRepository.findAll();
+  
+    @Override
+    public List<SoftSkill> verSoftSkill() {
+        return softRepo.findAll();
+    }
+
+    @Override
+    public void crearSoftSkill(SoftSkill softSkill) {
+        softRepo.save(softSkill);
+    }
+
+    @Override
+    public void borrarSoftSkill(Long id) {
+        softRepo.deleteById(id);
+    }
+
+    @Override
+    public SoftSkill buscarSoftSkill(Long id) {
+        return softRepo.findById(id).orElse(null);
     }
     
-    public Optional<SoftSkill> gerOne (int id){
-    return softSkillRepository.findById(id);
+    @Override
+    public void editarSoftSkill(SoftSkill softSkill) {
+        softRepo.save(softSkill);
     }
     
-    public Optional<SoftSkill> getByNombre(String nombre){
-    return softSkillRepository.findByNombre (nombre);
-    }
-    
-    public void save(SoftSkill softSkill){
-        softSkillRepository.save(softSkill);
-    }
-    
-    public void delete (long id){
-        softSkillRepository.deleteById(id);
-    }
-    
-    public boolean existsById(long id){
-    return softSkillRepository.existsById(id);
-    }
-    
-    public boolean existsByNombre(String nombre){
-    return softSkillRepository.existsByNombre(nombre);
-    }
-    
-    
-}*/
+}

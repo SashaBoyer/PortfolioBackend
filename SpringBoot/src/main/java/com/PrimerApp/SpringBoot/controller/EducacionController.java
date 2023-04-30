@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
-
 public class EducacionController {
     
     @Autowired 
@@ -28,7 +27,6 @@ public class EducacionController {
     //obtener educacion
     @GetMapping("/educacion/ver")
     public List<Educacion> verEducacion(){
-       System.out.print("Holiss Algo");
         return educacionService.verEducacion();
     }
     

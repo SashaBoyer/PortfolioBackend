@@ -16,9 +16,11 @@ public class SoftSkill {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
     private String nombre;
     private int porcentaje;
 
+    
     public SoftSkill() {
     }
 
