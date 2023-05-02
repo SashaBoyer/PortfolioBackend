@@ -18,19 +18,19 @@ public class Proyecto {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    private String nombreProyecto;
+    private String nombre;
     private String descripcion;
-    private Date fechaRealizacion;
+    private Date fecha_realizacion;
     private String imagen;
     
     public Proyecto(){
     }
     
-    public Proyecto(Long id, String nombreProyecto, String descripcion, Date fechaRealizacion, String imagen){
+    public Proyecto(Long id, String nombre, String descripcion, Date fecha_realizacion, String imagen){
         this.id = id;
-        this.nombreProyecto = nombreProyecto;
+        this.nombre = nombre;
         this.descripcion = descripcion;
-        this.fechaRealizacion = fechaRealizacion;
+        this.fecha_realizacion = fecha_realizacion;
         this.imagen = imagen;
     }
     

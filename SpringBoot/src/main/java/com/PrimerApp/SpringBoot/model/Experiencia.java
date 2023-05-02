@@ -19,18 +19,18 @@ public class Experiencia {
     
     private String empresa;
     private String puesto;
-    private Date fechaDesde;
-    private Date fechaHasta;
+    private Date fecha_desde;
+    private Date fecha_hasta;
     private String descripcion;
     
     public Experiencia(){
     }
     
-    public Experiencia(String empresa, String puesto, Date fechaDesde, Date fechaHasta, String descripcion){
+    public Experiencia(String empresa, String puesto, Date fecha_desde, Date fecha_hasta, String descripcion){
         this.empresa = empresa;
         this.puesto = puesto;
-        this.fechaDesde = fechaDesde;
-        this.fechaHasta = fechaHasta;
+        this.fecha_desde = fecha_desde;
+        this.fecha_hasta = fecha_hasta;
         this.descripcion = descripcion;
     }
     

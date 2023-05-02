@@ -25,7 +25,7 @@ public class HardSkillController {
      
     
 //EndPoint    
-    @PostMapping("/hard/skill/nuevo")
+    @PostMapping("/hard/skill/crear")
     public void agregarHardSkill(@RequestBody HardSkill hardSkill){ 
         hardServ.crearHardSkill(hardSkill);
     }

@@ -24,7 +24,7 @@ public class ProyectoController {
      
     
 //EndPoint    
-    @PostMapping("/proyecto/nuevo")
+    @PostMapping("/proyecto/crear")
     public void agregarProyecto (@RequestBody Proyecto proyecto){ 
         proyectoServ.crearProyecto(proyecto);
     }

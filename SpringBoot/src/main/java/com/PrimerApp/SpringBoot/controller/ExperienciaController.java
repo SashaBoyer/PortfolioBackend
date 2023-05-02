@@ -2,6 +2,7 @@ package com.PrimerApp.SpringBoot.controller;
 
 import com.PrimerApp.SpringBoot.Interface.IExperienciaService;
 import com.PrimerApp.SpringBoot.model.Experiencia;
+import java.sql.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -20,37 +21,50 @@ import org.springframework.web.bind.annotation.RestController;
 public class ExperienciaController {
     
     @Autowired
-    private IExperienciaService experienciaServ;
+    private IExperienciaService experienciaService;
      
     
 //EndPoint    
-    @PostMapping("/experiencia/nuevo")
+    @PostMapping("/experiencia/crear")
     public void agregarExperiencia(@RequestBody Experiencia experiencia){ 
-        experienciaServ.crearExperiencia(experiencia);
+        experienciaService.crearExperiencia(experiencia);
     }
     
-    @GetMapping ("/experiencia/ver")
-    @ResponseBody//lo que devuelve esta funcion, quiero que me lo devuelvas en el cuerpo de la respuesta
-    public List<Experiencia> verExperiencia (){
-        return experienciaServ.verExperiencia();
+    
+     @GetMapping("/experiencia/ver")
+    public List<Experiencia> verExperiencia(){
+        return experienciaService.verExperiencia();
     }
+
     
     @DeleteMapping ("/experiencia/borrar/{id}")
     public void borrarExperiencia(@PathVariable Long id){
-        experienciaServ.borrarExperiencia(id);
+        experienciaService.borrarExperiencia(id);
     }
-    
-    @PutMapping ("/experiencia/editar/{id}")
-    public void experienciaProyecto (@PathVariable Long id, 
-                                     @RequestBody Experiencia experiencia){
-        experienciaServ.buscarExperiencia(id);
-        experienciaServ.editarExperiencia(experiencia);
-    }
+       
    
     @GetMapping("/experiencia/ver/{id}")
     public Experiencia buscarExperiencia(@PathVariable Long id){
-        return experienciaServ.buscarExperiencia(id);
+        return experienciaService.buscarExperiencia(id);
     }
-     
-    
+
+    @PutMapping("/experiencia/editar/{id}")
+    public void editarExperiencia(@PathVariable Long id,
+                             @RequestParam("empresa")String nuevaEmpresa,
+                             @RequestParam("puesto")String nuevoPuesto,
+                             @RequestParam("fecha_desde")Date nuevoDesde,
+                             @RequestParam("fecha_hasta")Date nuevoHasta,
+                             @RequestParam("descripcion")String nuevaDescripcion
+                             
+    ){
+        Experiencia experiencia = experienciaService.buscarExperiencia(id);
+        experiencia.setEmpresa(nuevaEmpresa);
+        experiencia.setPuesto(nuevoPuesto);
+        experiencia.setFecha_desde(nuevoDesde);
+        experiencia.setFecha_hasta(nuevoHasta);
+        experiencia.setDescripcion(nuevaDescripcion);
+        
+        experienciaService.editarExperiencia(experiencia);
+    } 
+
 }

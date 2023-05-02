@@ -2,7 +2,6 @@ package com.PrimerApp.SpringBoot.controller;
 
 import com.PrimerApp.SpringBoot.model.Persona;
 import com.PrimerApp.SpringBoot.Interface.IPersonaService;
-import jakarta.annotation.security.PermitAll;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -25,7 +24,7 @@ public class PersonaController {
     
     
 //EndPoint    
-    @PostMapping("/persona/nueva")
+    @PostMapping("/persona/crear")
     public void agregarPersona (@RequestBody Persona pers){
         //listaPersonas.add(pers); 
         personaServ.crearPersona(pers);
@@ -34,7 +33,6 @@ public class PersonaController {
 //Consultar lista de personas
     @GetMapping ("/persona/ver")
     @ResponseBody//lo que devuelve esta funcion, quiero que me lo devuelvas en el cuerpo de la respuesta
-    @PermitAll
     public List<Persona> verPersonas (){
         //return listaPersonas;
         return personaServ.verPersonas();

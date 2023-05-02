@@ -24,7 +24,7 @@ public class SoftSkillController {
      
     
 //EndPoint    
-    @PostMapping("/soft/skill/nuevo")
+    @PostMapping("/soft/skill/crear")
     public void agregarSoftSkill(@RequestBody SoftSkill softSkill){ 
         softServ.crearSoftSkill(softSkill);
     }

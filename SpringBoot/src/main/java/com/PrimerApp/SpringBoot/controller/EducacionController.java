@@ -1,7 +1,7 @@
 package com.PrimerApp.SpringBoot.controller;
 
+import com.PrimerApp.SpringBoot.Interface.IEducacionService;
 import com.PrimerApp.SpringBoot.model.Educacion;
-import com.PrimerApp.SpringBoot.service.EducacionService;
 import java.sql.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class EducacionController {
     
     @Autowired 
-    private EducacionService educacionService;
+    private IEducacionService educacionService;
     
     
     //EndPoint
@@ -57,29 +57,31 @@ public class EducacionController {
     public void editarEducacion(@PathVariable Long id,
                              @RequestParam("establecimiento")String nuevoEst,
                              @RequestParam("titulo")String nuevoTitulo,
-                             @RequestParam("fechaDesde")Date nuevoDesde,
-                             @RequestParam("fechaHasta")Date nuevoHasta,
+                             @RequestParam("fecha_desde")Date nuevoDesde,
+                             @RequestParam("fecha_hasta")Date nuevoHasta,
                              @RequestParam("imagen")String nuevaImagen
                              
     ){
         Educacion educacion = educacionService.buscarEducacion(id);
         educacion.setEstablecimiento(nuevoEst);
         educacion.setTitulo(nuevoTitulo);
-        educacion.setFechaDesde(nuevoDesde);
-        educacion.setFechaHasta(nuevoHasta);
+        educacion.setFecha_desde(nuevoDesde);
+        educacion.setFecha_hasta(nuevoHasta);
         educacion.setImagen(nuevaImagen);
         
         educacionService.editarEducacion(educacion);
     }
+    
 
-    /*@PutMapping ("/editar/educacion/{id}")
+
+ /*   @PutMapping ("/educacion/editar/{id}")
     public void editarEducacion (@PathVariable Long id, 
                                  @RequestBody Educacion educacion){
         educacionService.buscarEducacion(id);
         educacionService.editarEducacion(educacion);
     }
     
-    */
+ */   
     
 }
 
